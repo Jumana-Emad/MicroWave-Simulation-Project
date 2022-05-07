@@ -22,7 +22,8 @@
 #define Function_8_bit    0x32
 #define Set5x7FontSize    0x20
 #define FirstRow          0x80
-
+unsigned int ncols = 0;
+unsigned int nrows = 0;
 
 
 /* prototypes of LCD functions */
