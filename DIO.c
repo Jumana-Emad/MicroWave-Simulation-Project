@@ -238,34 +238,34 @@ switch(portname){
 
 }
 }
-unsigned char GPIO_u8READPIN(unsigned char portname, unsigned char bitnumber){
+unsigned char GPIO_u8READPIN(unsigned char portname, unsigned char pinnumber){
 	switch(portname){
 		case'A':
 		case'a':{
-		return	READ_BIT(GPIO_PORTA_DATA_R,bitnumber);
-		//break;
+		return	READ_BIT(GPIO_PORTA_DATA_R,pinnumber);
+		
 	}
 		case'B':
 		case'b':{
-		return	READ_BIT(GPIO_PORTB_DATA_R,bitnumber);
+		return	READ_BIT(GPIO_PORTB_DATA_R,pinnumber);
 }
 		case'C':
 		case'c':{
-		return	READ_BIT(GPIO_PORTC_DATA_R,bitnumber);
-		//break;
+		return	READ_BIT(GPIO_PORTC_DATA_R,pinnumber);
+		
 }
 		case'D':
 		case'd':{
-		return	READ_BIT(GPIO_PORTD_DATA_R,bitnumber);
+		return	READ_BIT(GPIO_PORTD_DATA_R,pinnumber);
 
 }
 		case'E':
 		case'e':{
-		return	READ_BIT(GPIO_PORTE_DATA_R,bitnumber);
+		return	READ_BIT(GPIO_PORTE_DATA_R,pinnumber);
 }
 		case'F':
 		case'f':{
-		return	READ_BIT(GPIO_PORTF_DATA_R,bitnumber);
+		return	READ_BIT(GPIO_PORTF_DATA_R,pinnumber);
 }
 		//break;
 		}
