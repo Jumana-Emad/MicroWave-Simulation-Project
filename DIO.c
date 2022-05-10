@@ -270,3 +270,40 @@ unsigned char GPIO_u8READPIN(unsigned char portname, unsigned char pinnumber){
 		//break;
 		}
 	}
+unsigned char GPIO_u8READPORT(unsigned char portname)
+{
+	switch(portname)
+		{
+			case'A':
+			case'a':
+				{
+					return	GPIO_PORTA_DATA_R;
+				}
+			case'B':
+			case'b':
+				{
+					return	GPIO_PORTB_DATA_R;
+				}
+			case'C':
+			case'c':
+				{
+					return	GPIO_PORTC_DATA_R;
+				}
+			case'D':
+			case'd':
+				{
+					return	GPIO_PORTD_DATA_R;
+				}
+			case'E':
+			case'e':
+				{
+					return	GPIO_PORTE_DATA_R;
+				}
+			case'F':
+			case'f':
+			{
+					return	GPIO_PORTF_DATA_R;
+			}
+		//break;
+		}
+}
