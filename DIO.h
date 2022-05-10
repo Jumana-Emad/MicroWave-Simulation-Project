@@ -8,3 +8,4 @@ void DIO_vTOGGLEPIN(unsigned char portName, unsigned char pinNumber);
 void DIO_vSETPORTDIR(unsigned char portname, unsigned char direction);
 void DIO_vWRITEPORT(unsigned char portname , unsigned char data);
 unsigned char GPIO_u8READPIN(unsigned char portname, unsigned char pinnumber);
+unsigned char GPIO_u8READPORT(unsigned char portname);
