@@ -269,6 +269,7 @@ unsigned char GPIO_u8READPIN(unsigned char portname, unsigned char pinnumber){
 }
 		//break;
 		}
+	return 0;
 	}
 unsigned char GPIO_u8READPORT(unsigned char portname)
 {
@@ -306,4 +307,5 @@ unsigned char GPIO_u8READPORT(unsigned char portname)
 			}
 		//break;
 		}
+		return 0;
 }
