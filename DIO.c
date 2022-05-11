@@ -11,7 +11,7 @@ void PORT_INIT(unsigned char portName){
 			GPIO_PORTA_LOCK_R = 0x4C4F434B;
 			GPIO_PORTA_CR_R = 0xFF; // Note number of available pins in each port before calling
 			GPIO_PORTA_DEN_R = 0xFF;  
-			} break;
+			break;} 
 		case 'B':
 		case 'b':
 		        {
@@ -20,7 +20,7 @@ void PORT_INIT(unsigned char portName){
 			GPIO_PORTB_LOCK_R = 0x4C4F434B;
 			GPIO_PORTB_CR_R = 0xFF;
 			GPIO_PORTB_DEN_R = 0xFF;  
-			} break;
+			break;} 
                 case 'C':
 		case 'c':
 			{
@@ -29,7 +29,7 @@ void PORT_INIT(unsigned char portName){
 			GPIO_PORTC_LOCK_R = 0x4C4F434B;
 			GPIO_PORTC_CR_R = 0xFF;
 			GPIO_PORTC_DEN_R = 0xFF;  
-			} break;
+			break;} 
 		case 'D':
 		case 'd':
 			{
@@ -38,7 +38,7 @@ void PORT_INIT(unsigned char portName){
 			GPIO_PORTD_LOCK_R = 0x4C4F434B;
 			GPIO_PORTD_CR_R = 0xFF;
 			GPIO_PORTD_DEN_R = 0xFF;  
-			} break;
+			 break;}
 		case 'E':
 		case 'e':
 			{
@@ -47,7 +47,7 @@ void PORT_INIT(unsigned char portName){
 			GPIO_PORTE_LOCK_R = 0x4C4F434B;
 			GPIO_PORTE_CR_R = 0xFF;
 			GPIO_PORTE_DEN_R = 0xFF; 
-			} break;
+			 break;} 
 		case 'F':
 		case 'f':
 			{
@@ -56,7 +56,7 @@ void PORT_INIT(unsigned char portName){
 			GPIO_PORTF_LOCK_R = 0x4C4F434B;
 			GPIO_PORTF_CR_R = 0xFF;
 			GPIO_PORTF_DEN_R = 0xFF;  
-			} break;
+			 break;}
 		 
 		 }
 }
@@ -68,37 +68,37 @@ void DIO_vSETPINDIRECTION (unsigned char portName, unsigned char pinNumber, unsi
 			{
 			if(direction == 1){SET_BIT(GPIO_PORTA_DIR_R, pinNumber);}
 			else {CLR_BIT(GPIO_PORTA_DIR_R, pinNumber);} 
-			} break;
+			 break;}
 		case 'B':
 		case 'b':
 			{
 			if(direction == 1){SET_BIT(GPIO_PORTB_DIR_R, pinNumber);}
 			else {CLR_BIT(GPIO_PORTB_DIR_R, pinNumber);} 
-			} break;
+			 break;}
 		case 'C':
 		case 'c':
 			{
 			if(direction == 1){SET_BIT(GPIO_PORTC_DIR_R, pinNumber);}
 			else {CLR_BIT(GPIO_PORTC_DIR_R, pinNumber);} 
-			} break;
+			 break;}
 		case 'D':
 		case 'd':
 			{
 			if(direction == 1){SET_BIT(GPIO_PORTD_DIR_R, pinNumber);}
 			else {CLR_BIT(GPIO_PORTD_DIR_R, pinNumber);} 
-			} break;
+			 break;}
 		case 'E':
 		case 'e':
 			{
 			if(direction == 1){SET_BIT(GPIO_PORTE_DIR_R, pinNumber);}
 			else {CLR_BIT(GPIO_PORTE_DIR_R, pinNumber);} 
-			} break;
+			 break;}
 		case 'F':
 		case 'f':
 			{
 			if(direction == 1){SET_BIT(GPIO_PORTF_DIR_R, pinNumber);}
 			else {CLR_BIT(GPIO_PORTF_DIR_R, pinNumber);}
-			} break;
+			 break;}
 
 		}
 
@@ -111,59 +111,59 @@ void DIO_vWRITEPIN (unsigned char portName, unsigned char pinNumber, unsigned ch
 			{
 			if(data == 1){SET_BIT(GPIO_PORTA_DATA_R, pinNumber);}
 			else {CLR_BIT(GPIO_PORTA_DATA_R,pinNumber);}
-			} break;
+			 break;}
 		case 'B':
 		case 'b':
 			{
 			if(data == 1){SET_BIT(GPIO_PORTB_DATA_R, pinNumber);}
 			else {CLR_BIT(GPIO_PORTB_DATA_R,pinNumber);}
-			} break;
+			 break;} 
 		case 'C':
 		case 'c':
 			{
 			if(data == 1){SET_BIT(GPIO_PORTC_DATA_R, pinNumber);}
 			else {CLR_BIT(GPIO_PORTC_DATA_R,pinNumber);}
-			} break;
+			 break;}
 		case 'D':
 		case 'd':
 			{
 			if(data == 1){SET_BIT(GPIO_PORTD_DATA_R, pinNumber);}
 			else {CLR_BIT(GPIO_PORTD_DATA_R,pinNumber);}
-			} break;
+			 break;}
 		case 'E':
 		case 'e':
 			{
 			if(data == 1){SET_BIT(GPIO_PORTE_DATA_R, pinNumber);}
 			else {CLR_BIT(GPIO_PORTE_DATA_R,pinNumber);}
-			} break;
+			 break;} 
 		case 'F':
 		case 'f':
 			{
 			if(data == 1){SET_BIT(GPIO_PORTF_DATA_R, pinNumber);}
 			else {CLR_BIT(GPIO_PORTF_DATA_R,pinNumber);}
-			} break;
+			 break;}
       }
 }				
 void DIO_vTOGGLEPIN(unsigned char portName, unsigned char pinNumber){
       switch(portName){ 
 		case 'A':
 		case 'a':
-			{ TOG_BIT(GPIO_PORTA_DATA_R, pinNumber); } break;
+			{ TOG_BIT(GPIO_PORTA_DATA_R, pinNumber);  break;} 
 		case 'B':
 		case 'b':
-			{ TOG_BIT(GPIO_PORTB_DATA_R, pinNumber); } break;
+			{ TOG_BIT(GPIO_PORTB_DATA_R, pinNumber);  break;} 
 		case 'C':
 		case 'c':
-			{ TOG_BIT(GPIO_PORTC_DATA_R, pinNumber); } break;
+			{ TOG_BIT(GPIO_PORTC_DATA_R, pinNumber);  break;}
 		case 'D':
 		case 'd':
-			{ TOG_BIT(GPIO_PORTD_DATA_R, pinNumber); } break;
+			{ TOG_BIT(GPIO_PORTD_DATA_R, pinNumber);  break;} 
 		case 'E':
 		case 'e':
-			{ TOG_BIT(GPIO_PORTE_DATA_R, pinNumber); } break;
+			{ TOG_BIT(GPIO_PORTE_DATA_R, pinNumber);  break;}
 		case 'F':
 		case 'f':
-			{ TOG_BIT(GPIO_PORTF_DATA_R, pinNumber); } break;
+			{ TOG_BIT(GPIO_PORTF_DATA_R, pinNumber);  break;}
 
 	}
 }
