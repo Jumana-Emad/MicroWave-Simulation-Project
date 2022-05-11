@@ -309,3 +309,136 @@ unsigned char GPIO_u8READPORT(unsigned char portname)
 		}
 		return 0;
 }
+unsigned char DIO_uEnablePullUp(unsigned char portname, unsigned char pinnumber){
+        switch(portname){
+                case'A':
+                case'a':
+                {
+                SET_BIT(GPIO_PORTA_PUR_R,pinnumber);
+                break;
+          }
+                case'B':
+                case'b':
+                {
+                SET_BIT(GPIO_PORTB_PUR_R,pinnumber);
+                break;
+          }
+                case'C':
+                case'c':
+                {
+                SET_BIT(GPIO_PORTC_PUR_R,pinnumber);
+                break;
+          }
+                case'D':
+                case'd':
+                {
+                SET_BIT(GPIO_PORTD_PUR_R,pinnumber);
+                break;
+          }
+                case'E':
+                case'e':
+    {
+                SET_BIT(GPIO_PORTE_PUR_R,pinnumber);
+                break;
+          }
+                case'F':
+                case'f':
+          {
+                SET_BIT(GPIO_PORTF_PUR_R,pinnumber);
+                break;
+          }
+        }
+}
+unsigned char DIO_uWriteHighNibble(unsigned char portname, unsigned char data){
+    data<<=4;
+        switch(portname){
+                case'A':
+                case'a':
+                {
+                GPIO_PORTA_DATA_R &= 0x0F;
+          GPIO_PORTA_DATA_R |= data;
+                break;
+          }
+                case'B':
+                case'b':
+                {
+                GPIO_PORTB_DATA_R &= 0x0F;
+          GPIO_PORTB_DATA_R |= data;
+                break;
+          }
+                case'C':
+                case'c':
+                {
+                GPIO_PORTC_DATA_R &= 0x0F;
+          GPIO_PORTC_DATA_R |= data;
+                break;
+          }
+                case'D':
+                case'd':
+                {
+                GPIO_PORTD_DATA_R &= 0x0F;
+          GPIO_PORTD_DATA_R |= data;
+                break;
+          }
+                case'E':
+                case'e':
+                {
+                GPIO_PORTE_DATA_R &= 0x0F;
+          GPIO_PORTE_DATA_R |= data;
+                break;
+          }
+                case'F':
+                case'f':
+                {
+                GPIO_PORTF_DATA_R &= 0x0F;
+          GPIO_PORTF_DATA_R |= data;
+                break;
+          }
+        }
+}
+                unsigned char DIO_uWriteLowNibble(unsigned char portname, unsigned char data){
+        switch(portname){
+                case'A':
+                case'a':
+                {
+                GPIO_PORTA_DATA_R &= 0xF0;
+          GPIO_PORTA_DATA_R |= data;
+                break;
+          }
+                case'B':
+                case'b':
+                {
+                GPIO_PORTB_DATA_R &= 0xF0;
+          GPIO_PORTB_DATA_R |= data;
+                break;
+          }
+                case'C':
+                case'c':
+                {
+                GPIO_PORTC_DATA_R &= 0xF0;
+          GPIO_PORTC_DATA_R |= data;
+                break;
+          }
+                case'D':
+                case'd':
+                {
+                GPIO_PORTD_DATA_R &= 0xF0;
+          GPIO_PORTD_DATA_R |= data;
+                break;
+          }
+                case'E':
+                case'e':
+                {
+                GPIO_PORTE_DATA_R &= 0xF0;
+          GPIO_PORTE_DATA_R |= data;
+                break;
+          }
+                case'F':
+                case'f':
+                {
+                GPIO_PORTF_DATA_R &= 0xF0;
+          GPIO_PORTF_DATA_R |= data;
+                break;
+          }
+        }
+}
