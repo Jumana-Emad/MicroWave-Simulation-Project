@@ -1,6 +1,3 @@
-#include "DIO.c"
-
-
 void PORT_INIT(unsigned char portName);
 void DIO_vSETPINDIRECTION (unsigned char portName, unsigned char pinNumber, unsigned char direction);
 void DIO_vWRITEPIN (unsigned char portName, unsigned char pinNumber, unsigned char data);
@@ -10,5 +7,5 @@ void DIO_vWRITEPORT(unsigned char portname , unsigned char data);
 unsigned char GPIO_u8READPIN(unsigned char portname, unsigned char pinnumber);
 unsigned char GPIO_u8READPORT(unsigned char portname);
 void DIO_uEnablePullUp(unsigned char portname, unsigned char pinnumber);
-void char DIO_uWriteHighNibble(unsigned char portname, unsigned char data);
-void char DIO_uWriteLowNibble(unsigned char portname, unsigned char data);
+void DIO_uWriteHighNibble(unsigned char portname, unsigned char data);
+void DIO_uWriteLowNibble(unsigned char portname, unsigned char data);
