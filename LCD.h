@@ -1,4 +1,4 @@
-#include "lcd.c"
+
 
 
 static void Send_Pulse(void);
