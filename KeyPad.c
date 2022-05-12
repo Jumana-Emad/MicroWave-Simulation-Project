@@ -35,7 +35,7 @@ unsigned char KeyPad_u8Read(unsigned char PortName)
 			{
 				x = GPIO_u8READPIN('A', Column);
 				if(x == 0)
-				{value_Returned = array [Row] [Column];}
+				{value_Returned = array [Row] [Column-4];}
 				break;
 			}
 			if(x == 0)
