@@ -4,7 +4,14 @@
 void Keypad_Init(unsigned char PortName)
 {
 	Port_Init(PortName);
-	DIO_vSETPORTDIR(PortName, 0x0F);
+	DIO_vSETPINDIRECTION("D", 0, 1);
+	DIO_vSETPINDIRECTION("D", 1, 1);
+	DIO_vSETPINDIRECTION("D", 2, 1);
+	DIO_vSETPINDIRECTION("D", 3, 1);
+	DIO_vSETPINDIRECTION("A", 4, 0);
+	DIO_vSETPINDIRECTION("A", 5, 0);
+	DIO_vSETPINDIRECTION("A", 6, 0);
+	DIO_vSETPINDIRECTION("A", 7, 0);
 	DIO_uEnablePullUp(PortName, 4);
 	DIO_uEnablePullUp(PortName, 5);
 	DIO_uEnablePullUp(PortName, 6);
