@@ -356,42 +356,42 @@ void DIO_uWriteHighNibble(unsigned char portname, unsigned char data){
 		case'a':
 		{
 		GPIO_PORTA_DATA_R &= 0x0F;
-	  GPIO_PORTA_DATA_R |= data;
+	        GPIO_PORTA_DATA_R |= data;
 		break;
 	  }
 		case'B':
 		case'b':
 		{
 		GPIO_PORTB_DATA_R &= 0x0F;
-	  GPIO_PORTB_DATA_R |= data;
+	        GPIO_PORTB_DATA_R |= data;
 		break;
 	  }
 		case'C':
 		case'c':
 		{
 		GPIO_PORTC_DATA_R &= 0x0F;
-	  GPIO_PORTC_DATA_R |= data;
+	        GPIO_PORTC_DATA_R |= data;
 		break;
 	  }
 		case'D':
 		case'd':
 		{
 		GPIO_PORTD_DATA_R &= 0x0F;
-	  GPIO_PORTD_DATA_R |= data;
+	        GPIO_PORTD_DATA_R |= data;
 		break;
 	  }
 		case'E':
 		case'e':
 		{
 		GPIO_PORTE_DATA_R &= 0x0F;
-	  GPIO_PORTE_DATA_R |= data;
+	        GPIO_PORTE_DATA_R |= data;
 		break;
 	  }
 		case'F':
 		case'f':
 		{
 		GPIO_PORTF_DATA_R &= 0x0F;
-	  GPIO_PORTF_DATA_R |= data;
+  	        GPIO_PORTF_DATA_R |= data;
 		break;
 	  }
 	}
@@ -402,42 +402,42 @@ void DIO_uWriteLowNibble(unsigned char portname, unsigned char data){
 		case'a':
 		{
 		GPIO_PORTA_DATA_R &= 0xF0;
-	  GPIO_PORTA_DATA_R |= data;
+	        GPIO_PORTA_DATA_R |= data;
 		break;
 	  }
 		case'B':
 		case'b':
 		{
 		GPIO_PORTB_DATA_R &= 0xF0;
-	  GPIO_PORTB_DATA_R |= data;
+	        GPIO_PORTB_DATA_R |= data;
 		break;
 	  }
 		case'C':
 		case'c':
 		{
 		GPIO_PORTC_DATA_R &= 0xF0;
-	  GPIO_PORTC_DATA_R |= data;
+	        GPIO_PORTC_DATA_R |= data;
 		break;
 	  }
 		case'D':
 		case'd':
 		{
 		GPIO_PORTD_DATA_R &= 0xF0;
-	  GPIO_PORTD_DATA_R |= data;
+	        GPIO_PORTD_DATA_R |= data;
 		break;
 	  }
 		case'E':
 		case'e':
 		{
 		GPIO_PORTE_DATA_R &= 0xF0;
-	  GPIO_PORTE_DATA_R |= data;
+	        GPIO_PORTE_DATA_R |= data;
 		break;
 	  }
 		case'F':
 		case'f':
 		{
 		GPIO_PORTF_DATA_R &= 0xF0;
-	  GPIO_PORTF_DATA_R |= data;
+	        GPIO_PORTF_DATA_R |= data;
 		break;
 	  }
 	}
