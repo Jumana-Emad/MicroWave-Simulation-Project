@@ -1,11 +1,11 @@
 #include "DIO.h"
 #include "LCD_config.h"
-#define Dataport 'A'
-#define CTRLPort 'B'
+#define Dataport 'B'
+#define CTRLPort 'E'
 #include "delayofLCD.h"
 enum control {E,RS,RW};
 //intialization to LCD
-//LCD will take the ports of Port A and its control port on Port B
+//LCD will take the ports of Port B and its control port on Port E
 
 //sending pulse to enable
 static void Send_Pulse(void){ 
