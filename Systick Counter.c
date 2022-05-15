@@ -16,6 +16,6 @@ uint32_t j;
 uint32_t i;
 	void count_sec(uint32_t Time) {
 	  for (i=0; i<Time; i++){
-	    count_msec(time); 
+	    count_msec(1000); 
 	  }
 	}
