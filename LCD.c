@@ -2,7 +2,7 @@
 #include "LCD_config.h"
 #define Dataport 'B'
 #define CTRLPort 'E'
-#include "DelaysofLCD.h"
+#include "Delays.h"
 enum control {E,RS,RW};
 //intialization to LCD
 //LCD will take the ports of Port B and its control port on Port E
