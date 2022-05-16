@@ -1,6 +1,7 @@
 #include "tm4c123gh6pm.h"
 #include "Macros.c"
 
+void SystemInit() {};
 void PORT_INIT(unsigned char portName){ 
      switch(portName){
 		case 'A':
