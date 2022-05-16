@@ -19,7 +19,18 @@ void SysTick_wait_1ms() { //best is to disable then to enable
 uint32_t j;
 	void delay_s(uint32_t Time) {
 	  for (j=Time; j>0 ; j--){
-	    delay_ms(1000); 
+	    delay_ms(1000);
+	    Send_string(formatTime(i));	  
 	  }
 	}
-
+char* formatTime(int time_seconds){
+	// Change time from seconds to 00:00 format
+	int mins = floor(time_seconds / 60 % 60);
+	int secs = floor(time_seconds % 60);
+	
+	char* mins_str = (char*) mins;
+	char* secs_str = (char*) secs;
+	mins_str = strcat(mins_str, ":");
+	//returns time in 00:00 format
+	return strcat(mins_str, secs_str);
+}
