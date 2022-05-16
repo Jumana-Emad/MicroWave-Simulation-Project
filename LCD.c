@@ -3,8 +3,10 @@
 #define Dataport 'B'
 #define CTRLPort 'A'
 #include "Delays.h"
-#define E 2
-#define RS 3
+#define LCD GPIOB    		//LCD port with Tiva C 
+#define RS 0x01				 	//RS -> PB0 (0x01)
+#define RW 0x02         //RW -> PB1 (0x02)
+#define EN 0x04  		 	 	//EN -> PB2 (0x04)
 //enum control {E,RS,RW};
 //intialization to LCD
 //LCD will take the ports of Port B and its control port on Port E
@@ -16,14 +18,23 @@ delay_ms(2);
 DIO_vWRITEPIN('A',2,0);
 delay_ms(2);
 }
-//send command to LCD
-void LCD_Send_cmd(unsigned char cmd){
-DIO_vWRITEPORT('B',cmd);
-DIO_vWRITEPIN('A',RS,0); 				// Rs takes 0 if it is command
-Send_Pulse();
-delay_ms(5);
 
+
+
+
+/////////////////////////////////////////////////////
+//send command to LCD
+void LCD_Send_cmd(unsigned char cmd)
+{
+	LCD_Write4bits(cmd & 0xF0 , 0);    //upper nibble first
+	LCD_Write4bits(cmd << 4 , 0);			 //then lower nibble
+	
+	if(command < 4)
+		delay_ms(2);       //commands 1 and 2 need up to 1.64ms
+	else
+		delay_ms(40);      //all others 40 us
 }
+//////////////////////////////////////////////////////
 //intialization to LCD
 void LCD_vInit(void){
 //DIO_vSETPORTDIR(Dataport,0xFF);
@@ -31,36 +42,56 @@ void LCD_vInit(void){
 //DIO_vSETPINDIRECTION(CTRLPort,RS,3);	//RS on pin 1
 //DIO_vSETPINDIRECTION(CTRLPort,RW,1);	//RW on pin 2
 //DIO_vWRITEPIN(CTRLPort,RW,0); // 0 always to write
-LCD_Send_cmd(0x38);
-SysTick_wait_1ms();
-LCD_Send_cmd(0x0C);
-SysTick_wait_1ms();
-LCD_Send_cmd(0x01);
-delay_ms(10);
-LCD_Send_cmd(0x06);
-SysTick_wait_1ms();
+
+	SYSCTL->RCGCGPIO |= 0x02;    //enable clock for PORTB
+	delay_ms(10);                 //delay 10 ms for enable the clock of PORTB
+  LCD->DIR = 0xFF;             //let PORTB as output pins
+	LCD->DEN = 0xFF;             //enable PORTB digital IO pins
+	LCD_Send_cmd(0x28);          //2 lines and 5x7 character (4-bit data, D4 to D7)
+	LCD_Send_cmd(0x06);          //Automatic Increment cursor (shift cursor to right)
+	LCD_Send_cmd(0x01);					 //Clear display screen
+	LCD_Send_cmd(0x0F);          //Display on, cursor blinking
+}	
 	
+///////////////////////////////////////////////////////////////////////
 }
 //fn to send char
-void LCD_Send_char(char chr){
-DIO_vWRITEPORT('B',chr);
-DIO_vWRITEPIN('A',RS,1);
-Send_Pulse();
-delay_ms(5);
-
+void LCD_Send_char(unsigned char data)
+{
+	LCD_Write4bits(data & 0xF0 , RS);   //upper nibble first
+	LCD_Write4bits(data << 4 , RS);     //then lower nibble
+	delay_ms(40);												//delay for LCD (MCU is faster than LCD)
 }
 
+
+
+////////////////////////////////////////////////////
 
 //fn to send String
-void Send_string(char *data){
-while (*data){						///((*data)!='\0')
-LCD_Send_char ((*data));
-data++;
-}			
+
+void Send_string(char * data)
+{  
+	volatile int i = 0;          //volatile is important 
+	
+	while(*(data+i) != '\0')       //until the end of the string
+	{
+		LCD_Send_char(*(data+i));    //Write each character of string
+		i++;                        //increment for next character
+	}
 }
 
-
-
+/////////////////////////////////////////////////
+void LCD_Write4bits(unsigned char data, unsigned char control)
+{
+	data &= 0xF0;                       //clear lower nibble for control 
+	control &= 0x0F;                    //clear upper nibble for data
+	LCD->DATA = data | control;         //Include RS value (command or data ) with data 
+	LCD->DATA = data | control | EN;    //pulse EN
+	delayUs(0);													//delay for pulsing EN
+	LCD->DATA = data | control;					//Turn off the pulse EN
+	LCD->DATA = 0;                      //Clear the Data 
+}
+////////////////////////////////////////////////////
 //fn to clear screen
 void LCD_clearscreen(void){
 LCD_Send_cmd(clear_display);
