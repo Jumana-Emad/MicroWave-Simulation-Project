@@ -16,9 +16,9 @@ void SysTick_wait_1ms() { //best is to disable then to enable
 	    SysTick_wait_1ms(); 
 	  }	  
 	}
-uint32_t i;
+uint32_t j;
 	void delay_s(uint32_t Time) {
-	  for (i=Time; i>0 ; i--){
+	  for (j=Time; j>0 ; j--){
 	    delay_ms(1000); 
 	  }
 	}
