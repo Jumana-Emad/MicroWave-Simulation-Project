@@ -1,9 +1,9 @@
 #include "DIO.h"
 #include "LCD_config.h"
 #define Dataport 'B'
-#define CTRLPort 'E'
+#define CTRLPort 'A'
 #include "Delays.h"
-enum control {E,RS,RW};
+//enum control {E,RS,RW};
 //intialization to LCD
 //LCD will take the ports of Port B and its control port on Port E
 
@@ -25,9 +25,9 @@ SysTick_wait_1ms();
 //intialization to LCD
 void LCD_vInit(void){
 DIO_vSETPORTDIR(Dataport,0xFF);
-DIO_vSETPINDIRECTION(CTRLPort,E,1); 	//Enable on pin 0
-DIO_vSETPINDIRECTION(CTRLPort,RS,1);	//RS on pin 1
-DIO_vSETPINDIRECTION(CTRLPort,RW,1);	//RW on pin 2
+DIO_vSETPINDIRECTION(CTRLPort,E,2); 	//Enable on pin 0
+DIO_vSETPINDIRECTION(CTRLPort,RS,3);	//RS on pin 1
+//DIO_vSETPINDIRECTION(CTRLPort,RW,1);	//RW on pin 2
 DIO_vWRITEPIN(CTRLPort,RW,0); // 0 always to write
 LCD_Send_cmd(Function_8_bit);
 SysTick_wait_1ms();
