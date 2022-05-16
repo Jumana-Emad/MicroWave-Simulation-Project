@@ -44,6 +44,7 @@ SysTick_wait_1ms();
 }
 //fn to send char
 void LCD_Send_char(char chr){
+DIO_vWRITEPORT(Dataport,0);
 DIO_vWRITEPORT(Dataport,chr);
 DIO_vWRITEPIN(CTRLPort,RS,1);
 Send_Pulse();
