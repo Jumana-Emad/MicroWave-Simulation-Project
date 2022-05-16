@@ -18,6 +18,7 @@ delay_ms(2);
 }
 //send command to LCD
 void LCD_Send_cmd(char cmd){
+DIO_vWRITEPORT(Dataport,0);	
 DIO_vWRITEPORT(Dataport,cmd);
 DIO_vWRITEPIN(CTRLPort,RS,0); // Rs takes 0 if it is command
 Send_Pulse();
