@@ -2,8 +2,7 @@
 #include "LCD_config.h"
 #define Dataport 'B'
 #define CTRLPort 'A'
-#include "Delays.h"
-#define LCD GPIOB    		//LCD port with Tiva C 
+#include "Delays.h"		
 #define RS 0x01				 	//RS -> PB0 (0x01)
 #define RW 0x02         //RW -> PB1 (0x02)
 #define EN 0x04  		 	 	//EN -> PB2 (0x04)
