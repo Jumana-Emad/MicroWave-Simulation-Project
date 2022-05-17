@@ -1,5 +1,9 @@
 #include "tm4c123gh6pm.h"
 #include "stdint.h"
+#include "Math.h"
+#include "LCD.h"
+#include "string.h"
+
 void SysTick_wait_1ms() { //best is to disable then to enable
 		NVIC_ST_CTRL_R=0;
 		NVIC_ST_RELOAD_R = 16000 - 1;
