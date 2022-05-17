@@ -25,12 +25,19 @@ uint32_t j;
 	}
 char* formatTime(int time_seconds){
 	// Change time from seconds to 00:00 format
-	int mins = floor((time_seconds / 60) % 60);
-	int secs = floor(time_seconds % 60);
+	char time[5] = "00:00";
+	int mins = floor((time_seconds / 60) % 60) ;
+	int secs = floor(time_seconds % 60) ;
 	
-	char* mins_str = (char*) mins;
-	char* secs_str = (char*) secs;
-	mins_str = strcat(mins_str, ":");
-	//returns time in 00:00 format
-	return strcat(mins_str, secs_str);
+	char ones = (mins %10) +'0';
+	char tens = ((mins /10) )+'0';
+	char secones = (secs %10)+'0';
+	char sectens = ((secs /10))+'0';
+	
+	
+	time[0]=tens;
+	time[1]=ones;
+	time[3]=sectens;
+	time[4] = secones;
+	return time;
 }
