@@ -29,7 +29,7 @@ void LCD_Send_cmd(unsigned char cmd)
 	LCD_Write4bits(cmd & 0xF0 , 0);    //upper nibble first
 	LCD_Write4bits(cmd << 4 , 0);			 //then lower nibble
 	
-	if(command < 4)
+	if(cmd < 4)
 		delay_ms(2);       //commands 1 and 2 need up to 1.64ms
 	else
 		delay_ms(40);      //all others 40 us
@@ -43,10 +43,10 @@ void LCD_vInit(void){
 //DIO_vSETPINDIRECTION(CTRLPort,RW,1);	//RW on pin 2
 //DIO_vWRITEPIN(CTRLPort,RW,0); // 0 always to write
 
-	SYSCTL->RCGCGPIO |= 0x02;    //enable clock for PORTB
+	SYSCTL_RCGCGPIO_R |= 0x02;    //enable clock for PORTB
 	delay_ms(10);                 //delay 10 ms for enable the clock of PORTB
-  LCD->DIR = 0xFF;             //let PORTB as output pins
-	LCD->DEN = 0xFF;             //enable PORTB digital IO pins
+  GPIO_PORTB_DIR_R = 0xFF;             //let PORTB as output pins
+	GPIO_PORTB_DEN_R = 0xFF;             //enable PORTB digital IO pins
 	LCD_Send_cmd(0x28);          //2 lines and 5x7 character (4-bit data, D4 to D7)
 	LCD_Send_cmd(0x06);          //Automatic Increment cursor (shift cursor to right)
 	LCD_Send_cmd(0x01);					 //Clear display screen
@@ -93,11 +93,11 @@ void LCD_Write4bits(unsigned char data, unsigned char control)
 {
 	data &= 0xF0;                       //clear lower nibble for control 
 	control &= 0x0F;                    //clear upper nibble for data
-	LCD->DATA = data | control;         //Include RS value (command or data ) with data 
-	LCD->DATA = data | control | EN;    //pulse EN
+	GPIO_PORTB_DATA_R = data | control;         //Include RS value (command or data ) with data 
+	GPIO_PORTB_DATA_R = data | control | EN;    //pulse EN
 	delayUs(0);													//delay for pulsing EN
-	LCD->DATA = data | control;					//Turn off the pulse EN
-	LCD->DATA = 0;                      //Clear the Data 
+	GPIO_PORTB_DATA_R = data | control;					//Turn off the pulse EN
+	GPIO_PORTB_DATA_R = 0;                      //Clear the Data 
 }
 ////////////////////////////////////////////////////
 //fn to clear screen
