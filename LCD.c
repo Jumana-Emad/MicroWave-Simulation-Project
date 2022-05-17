@@ -6,9 +6,7 @@
 #define RS 0x01				 	//RS -> PB0 (0x01)
 #define RW 0x02         //RW -> PB1 (0x02)
 #define EN 0x04  		 	 	//EN -> PB2 (0x04)
-//enum control {E,RS,RW};
-//intialization to LCD
-//LCD will take the ports of Port B and its control port on Port E
+
 
 //sending pulse to enable
 static void Send_Pulse(void){ 
