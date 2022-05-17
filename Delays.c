@@ -25,7 +25,13 @@ uint32_t j;
 	}
 char* formatTime(int time_seconds){
 	// Change time from seconds to 00:00 format
-	char time[5] = "00:00";
+	char time[5];
+	time[0] = '0';
+	time[1] = '0';
+	time[2] = ':';
+	time[3] = '0';
+	time[4] = '0';
+	
 	int mins = (time_seconds / 60) ;
 	int secs = (time_seconds % 60) ;
 	
