@@ -20,6 +20,17 @@ delay_ms(2);
 
 
 /////////////////////////////////////////////////////
+void LCD_Write4bits(unsigned char data, unsigned char control)
+{
+	data &= 0xF0;                       //clear lower nibble for control 
+	control &= 0x0F;                    //clear upper nibble for data
+	GPIO_PORTB_DATA_R = data | control;         //Include RS value (command or data ) with data 
+	GPIO_PORTB_DATA_R = data | control | EN;    //pulse EN
+	delay_ms(0);													//delay for pulsing EN
+	GPIO_PORTB_DATA_R = data | control;					//Turn off the pulse EN
+	GPIO_PORTB_DATA_R = 0;                      //Clear the Data 
+}
+////////////////////////////////////////////////////
 //send command to LCD
 void LCD_Send_cmd(unsigned char cmd)
 {
@@ -45,7 +56,6 @@ void LCD_vInit(void){
 }	
 	
 ///////////////////////////////////////////////////////////////////////
-}
 //fn to send char
 void LCD_Send_char(unsigned char data)
 {
@@ -80,17 +90,6 @@ void LCD_String(char* str){
 }
 
 /////////////////////////////////////////////////
-void LCD_Write4bits(unsigned char data, unsigned char control)
-{
-	data &= 0xF0;                       //clear lower nibble for control 
-	control &= 0x0F;                    //clear upper nibble for data
-	GPIO_PORTB_DATA_R = data | control;         //Include RS value (command or data ) with data 
-	GPIO_PORTB_DATA_R = data | control | EN;    //pulse EN
-	delayUs(0);													//delay for pulsing EN
-	GPIO_PORTB_DATA_R = data | control;					//Turn off the pulse EN
-	GPIO_PORTB_DATA_R = 0;                      //Clear the Data 
-}
-////////////////////////////////////////////////////
 //fn to clear screen
 void LCD_clearscreen(void){
 LCD_Send_cmd(clear_display);
