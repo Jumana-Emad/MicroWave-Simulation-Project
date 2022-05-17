@@ -3,3 +3,4 @@
 void SysTick_wait_1ms();
 void delay_ms (uint32_t time);
 void delay_s(uint32_t Time);
+char* formatTime(int time_seconds);
