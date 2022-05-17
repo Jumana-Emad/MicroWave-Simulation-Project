@@ -20,7 +20,7 @@ uint32_t j;
 	void delay_s(uint32_t Time) {
 	  for (j=Time; j>0 ; j--){
 	    delay_ms(1000);
-	    Send_string(formatTime(i));	  
+	    Send_string(formatTime(j));	  
 	  }
 	}
 char* formatTime(int time_seconds){
