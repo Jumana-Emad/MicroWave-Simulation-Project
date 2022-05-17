@@ -36,12 +36,6 @@ void LCD_Send_cmd(unsigned char cmd)
 //////////////////////////////////////////////////////
 //intialization to LCD
 void LCD_vInit(void){
-//DIO_vSETPORTDIR(Dataport,0xFF);
-//DIO_vSETPINDIRECTION(CTRLPort,E,2); 	//Enable on pin 0
-//DIO_vSETPINDIRECTION(CTRLPort,RS,3);	//RS on pin 1
-//DIO_vSETPINDIRECTION(CTRLPort,RW,1);	//RW on pin 2
-//DIO_vWRITEPIN(CTRLPort,RW,0); // 0 always to write
-
 	SYSCTL_RCGCGPIO_R |= 0x02;    //enable clock for PORTB
 	delay_ms(10);                 //delay 10 ms for enable the clock of PORTB
   GPIO_PORTB_DIR_R = 0xFF;             //let PORTB as output pins
