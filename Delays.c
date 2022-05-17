@@ -16,13 +16,7 @@ void SysTick_wait_1ms() { //best is to disable then to enable
 	    SysTick_wait_1ms(); 
 	  }	  
 	}
-uint32_t j;
-	void delay_s(uint32_t Time) {
-	  for (j=Time; j>0 ; j--){
-	    delay_ms(1000);
-	    Send_string(formatTime(j));	  
-	  }
-	}
+
 char* formatTime(int time_seconds){
 	// Change time from seconds to 00:00 format
 	char time[5];
@@ -47,3 +41,11 @@ char* formatTime(int time_seconds){
 	time[4] = secones;
 	return time;
 }
+
+uint32_t j;
+	void delay_s(uint32_t Time) {
+	  for (j=Time; j>0 ; j--){
+	    delay_ms(1000);
+	    Send_string(formatTime(j));	  
+	  }
+	}
