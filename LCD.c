@@ -80,6 +80,14 @@ void Send_string(char * data)
 	}
 }
 
+void LCD_String(char* str){
+	LCD_Send_cmd(0x01);  Clear the display
+	LCD_Send_cmd(0x80);
+	 delay_ms(500);											
+	 Send_string(str);
+	 delay_ms(500);
+}
+
 /////////////////////////////////////////////////
 void LCD_Write4bits(unsigned char data, unsigned char control)
 {
