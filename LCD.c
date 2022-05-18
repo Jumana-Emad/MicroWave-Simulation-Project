@@ -61,7 +61,7 @@ void LCD_Send_char(unsigned char data)
 {
 	LCD_Write4bits(data & 0xF0 , RS);   //upper nibble first
 	LCD_Write4bits(data << 4 , RS);     //then lower nibble
-	delay_ms(40);												//delay for LCD (MCU is faster than LCD)
+	delay_ms(2);												//delay for LCD (MCU is faster than LCD)
 }
 
 
@@ -84,9 +84,16 @@ void Send_string(char * data)
 void LCD_String(char* str){
 	LCD_Send_cmd(0x01);  //Clear the display
 	LCD_Send_cmd(0x80);
-	 delay_ms(500);											
+	 delay_ms(200);											
 	 Send_string(str);
-	 delay_ms(500);
+	 delay_ms(200);
+}
+void LCD_Count(char* str){
+	LCD_Send_cmd(0x01);  //Clear the display
+	LCD_Send_cmd(0x80); //row1
+	 delay_ms(2);											
+	 Send_string(str);
+	 delay_ms(2);
 }
 
 /////////////////////////////////////////////////
