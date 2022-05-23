@@ -21,7 +21,16 @@ int i;
 int input;
 int State = Idle;
 char Returned_Value;
-		
+BUUTON_vINITPULLUP('F', 0); ///sw2
+BUUTON_vINITPULLUP('F', 4); ////sw1
+BUUTON_vINITPULLUP('A', 7);
+
+LED_vINIT('F',1);
+PORT_INIT('E');
+LED_vINIT('F',2);
+LED_vINIT('F',3);
+LCD_vInit();	
+Keypad_Init();			
 	
 while(1){
 if ((BUTTON_u8READ('A',7)) !=0){ //not pressed door closed
