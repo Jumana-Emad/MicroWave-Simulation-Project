@@ -11,7 +11,10 @@ void PORT_INIT(unsigned char portName){
 			while (READ_BIT(SYSCTL_RCGCGPIO_R ,0)==0);
 			GPIO_PORTA_LOCK_R = 0x4C4F434B;
 			GPIO_PORTA_CR_R = 0xFF;    // Note Number of Available Pins in each Port Before calling
-			GPIO_PORTA_DEN_R = 0xFF;  
+			GPIO_PORTA_DEN_R = 0xFF;
+                        GPIO_PORTA_AMSEL_R = 0x00;
+                        GPIO_PORTA_AFSEL_R = 0x00;
+
 			break;} 
 		case 'B':
 		case 'b':
@@ -20,7 +23,10 @@ void PORT_INIT(unsigned char portName){
 			while (READ_BIT(SYSCTL_RCGCGPIO_R ,1)==0);
 			GPIO_PORTB_LOCK_R = 0x4C4F434B;
 			GPIO_PORTB_CR_R = 0xFF;
-			GPIO_PORTB_DEN_R = 0xFF;  
+			GPIO_PORTB_DEN_R = 0xFF;
+                        GPIO_PORTB_AMSEL_R = 0x00;
+                        GPIO_PORTB_AFSEL_R = 0x00;
+
 			break;} 
                 case 'C':
 		case 'c':
