@@ -36,6 +36,8 @@ void PORT_INIT(unsigned char portName){
 			GPIO_PORTC_LOCK_R = 0x4C4F434B;
 			GPIO_PORTC_CR_R = 0xFF;
 			GPIO_PORTC_DEN_R = 0xFF;  
+                        GPIO_PORTC_AMSEL_R = 0x00;
+                        GPIO_PORTC_AFSEL_R = 0x00;
 			break;} 
 		case 'D':
 		case 'd':
@@ -44,7 +46,11 @@ void PORT_INIT(unsigned char portName){
 			while (READ_BIT(SYSCTL_RCGCGPIO_R ,3)==0);
 			GPIO_PORTD_LOCK_R = 0x4C4F434B;
 			GPIO_PORTD_CR_R = 0xFF;
-			GPIO_PORTD_DEN_R = 0xFF;  
+			GPIO_PORTD_DEN_R = 0xFF; 
+                        GPIO_PORTD_AMSEL_R = 0x00;
+                        GPIO_PORTD_AFSEL_R = 0x00;
+   
+   
 			 break;}
 		case 'E':
 		case 'e':
@@ -54,6 +60,9 @@ void PORT_INIT(unsigned char portName){
 			GPIO_PORTE_LOCK_R = 0x4C4F434B;
 			GPIO_PORTE_CR_R = 0xFF;
 			GPIO_PORTE_DEN_R = 0xFF; 
+                        GPIO_PORTE_AMSEL_R = 0x00;
+                        GPIO_PORTE_AFSEL_R = 0x00;
+
 			 break;} 
 		case 'F':
 		case 'f':
@@ -63,6 +72,8 @@ void PORT_INIT(unsigned char portName){
 			GPIO_PORTF_LOCK_R = 0x4C4F434B;
 			GPIO_PORTF_CR_R = 0xFF;
 			GPIO_PORTF_DEN_R = 0xFF;  
+                        GPIO_PORTF_AMSEL_R = 0x00;
+                        GPIO_PORTF_AFSEL_R = 0x00;
 			 break;}
 		 
 		 }
