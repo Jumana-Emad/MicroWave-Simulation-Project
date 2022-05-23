@@ -58,14 +58,12 @@ switch(Returned_Value){
 		while((BUTTON_u8READ('F',0)!=0)){};
 		LCD_clearscreen();
 		delay_s(60); 	//lazem a3mel print fe function el systick 3shan ytb3li el seconds
-					
+		while (((BUTTON_u8READ('A',7)) ==0) || ((BUTTON_u8READ('F',4)) == 0) )
+		{
+		End_D();
+		}			
 
-		
-		
-		
-		
-		
-		
+		delay_s(back);
 		LCD_Send_cmd(0x01);								//Clear the display
 		LCD_Send_cmd(0x80); 							//cursor right
 		LCD_String("done");
@@ -76,11 +74,11 @@ switch(Returned_Value){
 		case('B'):
 		while((BUTTON_u8READ('F',0)!=0)){};
 		delay_s(30*weight);
-								
-		
-		
-		
-		
+		while (((BUTTON_u8READ('A',7)) ==0) || ((BUTTON_u8READ('F',4)) == 0) )
+		{ 
+		End_D();
+		}
+		delay_s(back);		
 		LCD_String("done");
 		End();
 		GPIO_PORTE_DATA_R&=~0x10;
@@ -90,10 +88,11 @@ switch(Returned_Value){
 		case('C'): 
 		while((BUTTON_u8READ('F',0)!=0)){};
 		delay_s(weight*12);
-								
-
-		
-							
+		while (((BUTTON_u8READ('A',7)) ==0) || ((BUTTON_u8READ('F',4)) == 0) )
+		{ 
+		End_D();
+		}
+		delay_s(back);						
 		LCD_String("done");
 		End();
 		GPIO_PORTE_DATA_R&=~0x10;
