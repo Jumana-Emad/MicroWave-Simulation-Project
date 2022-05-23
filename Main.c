@@ -154,5 +154,75 @@ switch(Returned_Value){
 		LCD_clearscreen();
 		State=Weighing;}
 		break;		
+case(Get_Time):
+		time[0]='0';
+		time[1]='0';
+		time[2]=':';
+		time[3]='0';
+		time[4]='0';
+		LCD_String("Cooking Time?");
+		delay_ms(200);
+		LCD_clearscreen();
+		LCD_String(time);
+		delay_ms(200);
+					
+		while(1){
+		if (((int)(KeyPad_u8Read() - '0')>=0&&(int)(KeyPad_u8Read() - '0')<=9)){
+		time[4]=KeyPad_u8Read();
+		LCD_String(time);
+		break;}
+		else(LCD_String("invalid key try again"));}
+		while(1){
+		if (((int)(KeyPad_u8Read() - '0')>=0&&(int)(KeyPad_u8Read() - '0')<=9)){	
+		time[3]= time[4];
+		time[4]=KeyPad_u8Read();
+		LCD_String(time);
+		break;}
+		else{(LCD_String("invalid key try again"));}
+
+		}
+		while(1){
+		if(((int)(KeyPad_u8Read() - '0')>=0&&(int)(KeyPad_u8Read() - '0')<=9)){
+		time[1]=time[3];
+		time[3]=time[4];
+		time[4]=KeyPad_u8Read();
+		LCD_String(time);
+		break;}
+		else{(LCD_String("invalid key try again"));}
+		}
+		while(1){
+		if (((int)(KeyPad_u8Read() - '0')>=0&&(int)(KeyPad_u8Read() - '0')<=9)){
+		time[0]=time[1];
+		time[1]=time[3];
+		time[3]=time[4];
+		time[4]=KeyPad_u8Read();
+		LCD_String(time);
+		break;}
+		else{(LCD_String("invalid key try again"));}
+		}
+		
+			
+		case_d_time = 600*(int)(time[0] - '0')+60*(int)(time[1] - '0')+10*(int)(time[3] - '0')+(int)(time[4] - '0');
+		if(case_d_time>1800|| case_d_time==0){
+		LCD_String("Out of Range");
+		State = Get_Time;		
+		}	
+							
+		else if ((int)(time[3] - '0')>5){
+		LCD_String("0-59s max");
+		State = Get_Time;	
+		}
+		else {State=Cooking;}
+		break;
+			
+		default: 
+		LCD_String("insert A,B,C or D"); //invalid input please 
+		LCD_clearscreen();
+		State=Idle;
+				
+	}
+}		
+ } 
+ }
 						
 		
