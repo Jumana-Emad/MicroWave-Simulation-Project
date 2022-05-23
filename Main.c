@@ -120,3 +120,39 @@ switch(Returned_Value){
 		State=Idle;
 			break;
 		
+		case(Weighing):
+		if (Returned_Value =='B'){
+		str = "Beef";
+		LCD_String(str);
+		LCD_clearscreen();	
+		LCD_String("Beef Weight?");
+		delay_ms(2000);
+		LCD_clearscreen();
+		input = (int)(KeyPad_u8Read()- '0');
+		if (input<=9 && input>=1)
+		{
+		weight = input;
+		State=Cooking;}
+		}
+		else if(Returned_Value =='C')
+		{
+		str = "Chicken";
+		LCD_String(str);
+		LCD_clearscreen();
+		LCD_String("Chicken Weight?");
+		delay_ms(2000);
+		LCD_clearscreen();
+		}
+		input = (int)(KeyPad_u8Read()- '0');
+		if (input<=9 && input>=1)
+		{
+		weight = input;
+		State=Cooking;
+		}
+		else{LCD_String("ERR");
+		delay_ms(2000);
+		LCD_clearscreen();
+		State=Weighing;}
+		break;		
+						
+		
