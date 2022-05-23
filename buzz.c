@@ -1,5 +1,9 @@
 #include "DIO.h"
-
+#include "tm4c123gh6pm.h"
+#include "LED.h"
+#include "Delays.h"
+#include "Button.h"
+int z;
 void Buzz_vINIT(){
 	PORT_INIT('A'); //intialize port
 	DIO_vSETPINDIRECTION('A', 6, 1); //output pin
