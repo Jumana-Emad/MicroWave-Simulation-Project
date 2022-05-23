@@ -47,3 +47,77 @@ switch(State){
 		//else {State = Idle;}
 		break;
        
+		case(Cooking): 
+switch(Returned_Value){
+		case('A'):
+		LCD_Send_cmd(0x01);								//Clear the display
+		LCD_Send_cmd(0x80);
+		str = "Popcorn";
+		LCD_String(str);
+		delay_ms(2000);
+		while((BUTTON_u8READ('F',0)!=0)){};
+		LCD_clearscreen();
+		delay_s(60); 	//lazem a3mel print fe function el systick 3shan ytb3li el seconds
+					
+
+		
+		
+		
+		
+		
+		
+		LCD_Send_cmd(0x01);								//Clear the display
+		LCD_Send_cmd(0x80); 							//cursor right
+		LCD_String("done");
+		End();
+		GPIO_PORTE_DATA_R&=~0x10;
+		LCD_clearscreen();
+			break;
+		case('B'):
+		while((BUTTON_u8READ('F',0)!=0)){};
+		delay_s(30*weight);
+								
+		
+		
+		
+		
+		LCD_String("done");
+		End();
+		GPIO_PORTE_DATA_R&=~0x10;
+		delay_ms(2000);
+		LCD_clearscreen();	
+			break;
+		case('C'): 
+		while((BUTTON_u8READ('F',0)!=0)){};
+		delay_s(weight*12);
+								
+
+		
+							
+		LCD_String("done");
+		End();
+		GPIO_PORTE_DATA_R&=~0x10;
+		delay_ms(2000);
+		LCD_clearscreen();
+			break;
+		case('D'): 
+		delay_ms(2000);
+		if((BUTTON_u8READ('F',4)) != 0){
+								
+		while((BUTTON_u8READ('F',0)!=0)){}; //sw2
+		delay_s(case_d_time);
+							
+		LCD_String("done");
+		End();
+		GPIO_PORTE_DATA_R&=~0x10;
+		delay_ms(2000);
+
+		}
+		LCD_clearscreen();
+			break;
+							
+
+		}
+		State=Idle;
+			break;
+		
